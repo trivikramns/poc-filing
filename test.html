@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS01 Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .log-area {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            min-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .progress-steps {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .step {
+            flex: 1;
+            padding: 10px;
+            background: #e9ecef;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .step.active {
+            background: #007bff;
+            color: white;
+        }
+        .step.completed {
+            background: #28a745;
+            color: white;
+        }
+        .controls {
+            display: none;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e7f3ff;
+            border-radius: 5px;
+        }
+        .controls.show {
+            display: block;
+        }
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .monitor {
+            display: none;
+            background: #343a40;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .monitor.active {
+            display: block;
+        }
+        .monitor-content {
+            background: #212529;
+            padding: 10px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 11px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .spinner {
+            display: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #f3f4f6;
+            border-radius: 50%;
+            border-top-color: #007bff;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CS01 Filing Assistant - Test</h1>
+        <p>Testing button functionality</p>
+        
+        <div class="progress-steps">
+            <div class="step active" id="step1">Data Review</div>
+            <div class="step" id="step2">Login</div>
+            <div class="step" id="step3">Submit</div>
+        </div>
+        
+        <div>
+            <h3>Company Information</h3>
+            <p><strong>Company:</strong> 11111111 - EXAMPLE COMPANY</p>
+            <p><strong>Review Date:</strong> 2016-09-18</p>
+            <p><strong>Auth Code:</strong> 222222</p>
+        </div>
+        
+        <div>
+            <button class="btn" id="prepareForm">✓ Confirm Data & Prepare Filing</button>
+        </div>
+        
+        <div class="controls" id="automationControls">
+            <h4>Automation Controls</h4>
+            <button class="btn" id="startAutomation">
+                <span class="spinner" id="automationSpinner"></span>
+                🚀 Start Automated Filing
+            </button>
+        </div>
+        
+        <div>
+            <h3>Companies House Control</h3>
+            <button class="btn" id="openWebFiling">🌐 Open Companies House WebFiling</button>
+            <button class="btn" id="checkLoginBtn" disabled>🔍 Check Login Status</button>
+        </div>
+        
+        <div class="status">
+            <p><strong>Window Status:</strong> <span id="windowStatus">Not Opened</span></p>
+            <p><strong>Login Status:</strong> <span id="loginStatusText">Not Logged In</span></p>
+        </div>
+        
+        <div class="monitor" id="automationMonitor">
+            <h4>🤖 Automation Monitor</h4>
+            <div class="monitor-content" id="monitorContent">
+                Monitor output will appear here...
+            </div>
+        </div>
+        
+        <div>
+            <h3>Activity Log</h3>
+            <div class="log-area" id="logOutput">
+                System starting...<br>
+            </div>
+        </div>
+    </div>
+    
+    <script src="test-controller.js"></script>
+</body>
+</html>

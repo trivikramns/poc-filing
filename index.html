@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS01 Filing Assistant - Hybrid Automation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Form Section -->
+        <div class="form-container">
+            <div class="section-header">
+                <span>CS01 Filing Data</span>
+                <span class="version-badge">Hybrid v2.0</span>
+            </div>
+            <div class="form-section">
+                <h1>CS01 Filing Assistant</h1>
+                <p class="subtitle">Hybrid automation - secure login with auto-fill convenience</p>
+                
+                <div class="progress-steps">
+                    <div class="step active" id="step1">Data Review</div>
+                    <div class="step" id="step2">Prepare</div>
+                    <div class="step" id="step3">Auto-Fill</div>
+                </div>
+
+                <!-- Company Information -->
+                <div class="section-title">Company Information</div>
+                <div class="form-group">
+                    <label for="companyNumber">Company Number</label>
+                    <input type="text" id="companyNumber" value="11111111" class="readonly-field" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="companyName">Company Name</label>
+                    <input type="text" id="companyName" value="EXAMPLE COMPANY" class="readonly-field" readonly>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="reviewDate">Review Date</label>
+                        <input type="date" id="reviewDate" value="2016-09-18" readonly class="readonly-field">
+                    </div>
+                    <div class="form-group">
+                        <label for="authCode">Authentication Code</label>
+                        <input type="text" id="authCode" value="222222" class="readonly-field" readonly>
+                    </div>
+                </div>
+
+                <!-- SIC Codes -->
+                <div class="section-title">SIC Codes</div>
+                <div class="summary-card">
+                    <div class="summary-title">Standard Industrial Classification</div>
+                    <div class="summary-item">
+                        <span>15200</span>
+                        <span class="summary-value">Manufacture of footwear</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>41100</span>
+                        <span class="summary-value">Development of building projects</span>
+                    </div>
+                </div>
+
+                <!-- Statement of Capital -->
+                <div class="section-title">Statement of Capital</div>
+                <div class="summary-card">
+                    <div class="summary-title">Share Capital Summary</div>
+                    <div class="summary-item">
+                        <span>Total Shares Issued:</span>
+                        <span class="summary-value">100</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Currency:</span>
+                        <span class="summary-value">GBP</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Nominal Value:</span>
+                        <span class="summary-value">£100.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Unpaid:</span>
+                        <span class="summary-value">£0.00</span>
+                    </div>
+                </div>
+
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Share Class</th>
+                                <th>Number</th>
+                                <th>Nominal</th>
+                                <th>Rights</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ORDINARY</td>
+                                <td>100</td>
+                                <td>£100.00</td>
+                                <td>One vote per share, pari passu dividend rights</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Shareholdings -->
+                <div class="section-title">Current Shareholdings</div>
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Shareholder</th>
+                                <th>Class</th>
+                                <th>Shares</th>
+                                <th>Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>JACKET CONGRESSPERSONLIQUOR</td>
+                                <td>ORDINARY</td>
+                                <td>10</td>
+                                <td>10%</td>
+                            </tr>
+                            <tr>
+                                <td>FAXRIVULET CONGRESSPERSONLIQUOR</td>
+                                <td>ORDINARY</td>
+                                <td>80</td>
+                                <td>80%</td>
+                            </tr>
+                            <tr>
+                                <td>LEWIS CONGRESSPERSONLIQUOR</td>
+                                <td>ORDINARY</td>
+                                <td>10</td>
+                                <td>10%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Share Transfers -->
+                <div class="section-title">Recent Share Transfers</div>
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Shares Transferred</th>
+                                <th>From/To</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2016-01-01</td>
+                                <td>10</td>
+                                <td>Transfer to FAXRIVULET CONGRESSPERSONLIQUOR</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Controls -->
+                <button class="btn btn-primary" id="prepareForm">✓ Confirm Data & Prepare Filing</button>
+                
+                <div class="automation-controls" id="automationControls">
+                    <div class="hybrid-info">
+                        <h4>🚀 Hybrid Automation Ready</h4>
+                        <p>Opens Companies House with intelligent auto-fill. You login securely, we handle the forms!</p>
+                    </div>
+                    
+                    <button class="btn btn-large" id="startAutomation">
+                        <span class="spinner" id="automationSpinner" style="display: none;"></span>
+                        🤖 Start Hybrid Automation
+                    </button>
+                    
+                    <div class="log-output" id="logOutput">System ready. Click 'Confirm Data & Prepare Filing' to begin...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="iframe-container">
+            <div class="section-header">
+                <span>Hybrid Automation Control</span>
+                <div class="status-indicator status-waiting" id="automationStatus">
+                    Ready
+                </div>
+            </div>
+            <div class="webfiling-control-panel">
+                <div class="control-header">
+                    <h2>🔒 Secure Hybrid Process</h2>
+                    <p>Combines security with automation convenience</p>
+                </div>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span class="feature-icon">🔐</span>
+                        <div class="feature-text">
+                            <strong>Secure Login</strong>
+                            <p>You login manually with your credentials</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🤖</span>
+                        <div class="feature-text">
+                            <strong>Auto-Fill Forms</strong>
+                            <p>We automatically fill all form fields</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">👁️</span>
+                        <div class="feature-text">
+                            <strong>Full Control</strong>
+                            <p>You review and submit when ready</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="instructions-panel">
+                    <h3>📋 How It Works:</h3>
+                    <ol>
+                        <li>Click "Start Hybrid Automation" above</li>
+                        <li>Popup opens with Companies House</li>
+                        <li>Login manually with your credentials</li>
+                        <li>Watch as forms auto-fill with your data</li>
+                        <li>Review everything and submit when ready</li>
+                        <li>Save your confirmation receipts</li>
+                    </ol>
+                </div>
+                
+                <div class="automation-monitor" id="automationMonitor">
+                    <h3>🤖 Automation Monitor</h3>
+                    <div class="monitor-content" id="monitorContent">
+                        Monitoring will appear here once automation starts...
+                    </div>
+                </div>
+                
+                <div class="security-notice">
+                    <h4>🔒 Security Notice</h4>
+                    <p>Your credentials are never stored or transmitted. You login directly on the Companies House website in a secure popup window.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="hybrid-controller.js"></script>
+</body>
+</html>
